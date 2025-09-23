@@ -1,138 +1,51 @@
-import { NextRequest, NextResponse } from "next/server";
-import pool from "@/app/libs/piza";
-import { ok } from "assert";
 
+import { NextRequest, NextResponse } from 'next/server';
+import {
+  getPizaById,
+  updatePiza,
+  deletePiza,
+  PizaData,
+} from '@/app/services/pizaService';
 
-// export async function GET(
-//     request:  NextRequest,
-//     { params }: { params: { id: string } }
-// ) {
-//     const id = params.id // user id
-    
-//     try {
-//         const db = await pool.getConnection()        
-        
-//         const query = 'select * from piza where id = ?'
-//         const [rows] = await db.execute(query,[id])
-//         db.release()
-        
-//         return NextResponse.json(rows)
-//     } catch (error) {
-//         return NextResponse.json({
-//             error: error
-//         }, { status: 500 })
-//     }
-// }
-
-
-
-
-// export async function POST(
-//     request:  NextRequest,
-    
-// ) {
-//     const data = await request.json();
-    
-//     try {
-//         const db = await pool.getConnection()        
-        
-//         const query = 'Insert into piza (name,ingridients,price) VALUES(?,?,?)'
-//         const [rows] = await db.execute(query,[data.name,data.ingridients,data.price]) 
-
-//         const querySelectCreated = 'Select * from piza where id = ?'
-//         // @ts-ignore
-//         const [result] = await db.execute(querySelectCreated,[rows.insertId]) 
-
-//         db.release() 
-//         // @ts-ignore
-//         return NextResponse.json(result [0])
-        
-//     } catch (error) {
-//         return NextResponse.json({
-//             error: error
-//         }, { status: 500 })
-//     }
-// }
-
-
-
+export async function GET(
+  request: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  try {
+    const id = params.id;
+    const item = await getPizaById(id);
+    if (!item) return NextResponse.json({ error: 'Not found' }, { status: 404 });
+    return NextResponse.json(item);
+  } catch (error) {
+    return NextResponse.json({ error: String(error) }, { status: 500 });
+  }
+}
 
 export async function PUT(
-    request:  NextRequest,
-    { params }: { params: { id: string } }
+  request: NextRequest,
+  { params }: { params: { id: string } }
 ) {
-    const id = params.id // user id
-    
+  try {
+    const id = params.id;
+    const data = (await request.json()) as Partial<PizaData>;
 
-        const requestData = await request.json()
-        const { name,ingridients,price } = requestData
-
-        const db = await pool.getConnection()
-
-        const UPDATEquery = 'UPDATE piza SET name = ?, ingridients = ?, price = ? WHERE id = ?'
-        const selectquery = 'select * from piza where id = ?'
-        await db.execute(UPDATEquery, [name, ingridients, price, id ])
-        const [rows] = await db.execute(selectquery,[id])
-        db.release()
-// @ts-ignore
-        return NextResponse.json(rows[0])
-    
+    const updated = await updatePiza(id, data);
+    if (!updated) return NextResponse.json({ error: 'Not found' }, { status: 404 });
+    return NextResponse.json(updated);
+  } catch (error) {
+    return NextResponse.json({ error: String(error) }, { status: 500 });
+  }
 }
-
-
-
-
-
 
 export async function DELETE(
-    request: NextRequest,
-    { params }: { params: { id: string } }
+  request: NextRequest,
+  { params }: { params: { id: string } }
 ) {
-    const nameToDelete = params.id
-
-    try {
-        
-        const db = await pool.getConnection()
-        
-        const query = 'DELETE FROM piza WHERE id = ?'
-        const [rows] = await db.execute(query, [nameToDelete])
-        
-        db.release()
-        // @ts-ignore
-        return NextResponse.json({status:'ok',rows})
-    } catch (error) {
-        return NextResponse.json({
-            error: error
-        }, { status: 500 })
-    }
+  try {
+    const id = params.id;
+    await deletePiza(id);
+    return NextResponse.json({ status: 'ok' });
+  } catch (error) {
+    return NextResponse.json({ error: String(error) }, { status: 500 });
+  }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
