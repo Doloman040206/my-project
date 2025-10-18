@@ -8,37 +8,29 @@ import { PizaListItem } from './components/PizaListItem';
 
 const App = () => {
 
-
-
-
-	async function apiCratePiza(name: string, ingridients: string, price: number) {
-		const request = await fetch('/api/piza', {
-			method: 'POST',
-			body: JSON.stringify({name, ingridients, price})
-		});
-		const response = await request.json()
-		return response
+	async function apiCreatePiza(name: string, ingridients: string, price: number) {
+	const request = await fetch('/api/piza', {
+		method: 'POST',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify({ name, ingridients, price }),
+	});
+	return request.json();
 	}
 
 	async function apiEditPiza(id: number, name: string, ingridients: string, price: number) {
-		const request = await fetch(`/api/piza/${id}`, {
-			method: 'PUT',
-			body: JSON.stringify({name, ingridients, price})
-		});
-		const responce = await request.json()
-		return responce
+	const request = await fetch(`/api/piza/${id}`, {
+		method: 'PUT',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify({ name, ingridients, price }),
+	});
+	return request.json();
 	}
 
-	
-	  
-		
-
-	async function apiDeletePiza(id:number) {
-		const request = await fetch(`/api/piza/${id}`, {
-			method: 'DELETE',
-		});
-		const response = await request.json()
-		return response
+	async function apiDeletePiza(id: number) {
+	const request = await fetch(`/api/piza/${id}`, {
+		method: 'DELETE',
+	});
+	return request.json();
 	}
 
 	
@@ -49,7 +41,7 @@ const App = () => {
 	}, [])
 
 	async function addItem(name: string, ingridients: string, price: number){
-		let createResponse = await apiCratePiza(name, ingridients, price);
+		let createResponse = await apiCreatePiza(name, ingridients, price);
 		console.log('createResponse', createResponse)
 		await fetchPizaList()
 		}

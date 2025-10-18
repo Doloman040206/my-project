@@ -1,32 +1,16 @@
-
 import { NextRequest, NextResponse } from 'next/server';
-import { getAllPizas, createPiza, PizaData } from '@/app/services/pizaService';
+import { pizaService, PizaService } from '@/app/services/pizaService';
+import { withHandler } from '@/app/utils/withHandler';
 
-export async function GET() {
-  try {
-    const rows = await getAllPizas();
+  const service: PizaService = pizaService; // use default, tests may inject mock
+
+  export const GET = withHandler(async () => {
+    const rows = await service.getAllPizas();
     return NextResponse.json(rows);
-  } catch (error) {
-    return NextResponse.json({ error: String(error) }, { status: 500 });
-  }
-}
+  });
 
-export async function POST(request: NextRequest) {
-  try {
-    const data = (await request.json()) as PizaData;
-
-    if (
-      !data ||
-      typeof data.name !== 'string' ||
-      typeof data.ingridients !== 'string' ||
-      typeof data.price !== 'number'
-    ) {
-      return NextResponse.json({ error: 'Invalid payload' }, { status: 400 });
-    }
-
-    const created = await createPiza(data);
+  export const POST = withHandler(async (request: NextRequest) => {
+    const data = (await request.json()) as any;
+    const created = await service.createPiza(data);
     return NextResponse.json(created, { status: 201 });
-  } catch (error) {
-    return NextResponse.json({ error: String(error) }, { status: 500 });
-  }
-}
+  });

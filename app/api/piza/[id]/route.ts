@@ -1,51 +1,27 @@
-
 import { NextRequest, NextResponse } from 'next/server';
-import {
-  getPizaById,
-  updatePiza,
-  deletePiza,
-  PizaData,
-} from '@/app/services/pizaService';
+import { pizaService } from '@/app/services/pizaService';
+import { withHandler } from '@/app/utils/withHandler';
 
-export async function GET(
-  request: NextRequest,
-  { params }: { params: { id: string } }
-) {
-  try {
+  const service = pizaService;
+
+  export const GET = withHandler(async (_req: NextRequest, { params }: { params: { id: string } }) => {
     const id = params.id;
-    const item = await getPizaById(id);
+    const item = await service.getPizaById(id);
     if (!item) return NextResponse.json({ error: 'Not found' }, { status: 404 });
     return NextResponse.json(item);
-  } catch (error) {
-    return NextResponse.json({ error: String(error) }, { status: 500 });
-  }
-}
+  });
 
-export async function PUT(
-  request: NextRequest,
-  { params }: { params: { id: string } }
-) {
-  try {
+  export const PUT = withHandler(async (request: NextRequest, { params }: { params: { id: string } }) => {
     const id = params.id;
-    const data = (await request.json()) as Partial<PizaData>;
-
-    const updated = await updatePiza(id, data);
+    const patch = (await request.json()) as any;
+    const updated = await service.updatePiza(id, patch);
     if (!updated) return NextResponse.json({ error: 'Not found' }, { status: 404 });
     return NextResponse.json(updated);
-  } catch (error) {
-    return NextResponse.json({ error: String(error) }, { status: 500 });
-  }
-}
+  });
 
-export async function DELETE(
-  request: NextRequest,
-  { params }: { params: { id: string } }
-) {
-  try {
+  export const DELETE = withHandler(async (_req: NextRequest, { params }: { params: { id: string } }) => {
     const id = params.id;
-    await deletePiza(id);
+    const ok = await service.deletePiza(id);
+    if (!ok) return NextResponse.json({ error: 'Not found' }, { status: 404 });
     return NextResponse.json({ status: 'ok' });
-  } catch (error) {
-    return NextResponse.json({ error: String(error) }, { status: 500 });
-  }
-}
+  });
