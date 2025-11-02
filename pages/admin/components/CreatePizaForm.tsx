@@ -1,16 +1,15 @@
-import React, { use, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
-export interface ICreatePizaFormProps {
-    addItem: (name: string, ingredients: string, price: number) => void;
+export interface CreatePizaFormProps {
+    onAdd: (name: string, ingredients: string, price: number) => void;
 }
 
-export function CreatePizaForm(props: ICreatePizaFormProps) {
+export function CreatePizaForm({ onAdd }: CreatePizaFormProps) {
     const [nameInput, setNameInput] = useState('');
     const [ingredientsInput, setIngredientsInput] = useState('');
     const [priceInput, setPriceInput] = useState('');
 
-    const addItem = () => {
-        // 1. check all fields are 
+    const handleAdd = () => { 
         if (!nameInput || !ingredientsInput || !priceInput) {
             alert('Please, fill all fields');
             return;
@@ -20,10 +19,8 @@ export function CreatePizaForm(props: ICreatePizaFormProps) {
             alert('Wrong price');
             return;
         }
-        // 2. call props.addItem() with new object
-        props.addItem(nameInput, ingredientsInput, parsedPrice);
         
-        // 3. reset all inputs/fields
+        onAdd(nameInput.trim(), ingredientsInput.trim(), parsedPrice);
         setNameInput('')
         setIngredientsInput('')
         setPriceInput('')
@@ -102,7 +99,7 @@ export function CreatePizaForm(props: ICreatePizaFormProps) {
                         borderRadius: '8px',
                         cursor: 'pointer',
                     }}
-                    onClick={addItem}
+                    onClick={handleAdd}
                 >
                     ADD
                 </button>
@@ -114,3 +111,5 @@ export function CreatePizaForm(props: ICreatePizaFormProps) {
     )
 
 }
+
+export default CreatePizaForm;

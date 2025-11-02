@@ -1,5 +1,5 @@
-import type { PizaData, PizaRepo } from '@/app/repositories/pizaRepository';
-import { pizaRepository } from '@/app/repositories/pizaRepository';
+import type { PizaData, PizaRepo } from '../repositories/pizaRepository';
+import { pizaRepository } from '../repositories/pizaRepository';
 
   export type PizaDataPublic = PizaData;
 

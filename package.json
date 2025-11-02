@@ -12,8 +12,10 @@
     "lint": "npm run lint:next && npm run lint:eslint",
     "prepare": "husky install",
     "prepush-checks": "npm run lint && npm test && npm run build-check",
-    "test": "node -e \"process.exit(0)\"",
-    "build-check": "tsc --noEmit"
+    "test:unit": "jest --config=jest.unit.config.ts --runInBand",
+    "test:integration": "jest --config=jest.integration.config.ts --runInBand",
+    "test:e2e": "jest --config=jest.e2e.config.ts --runInBand --testTimeout=180000",
+    "test": "npm run test:unit && npm run test:integration && npm run test:e2e"
   },
   "lint-staged": {
     "src/**/*.{ts,tsx,js,jsx}": [
@@ -29,19 +31,30 @@
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^8.44.0",
     "@typescript-eslint/parser": "^8.44.0",
-    "mysql2": "^3.15.2",
+    "express": "^5.1.0",
+    "knex": "^3.1.0",
+    "mysql2": "^3.15.3",
     "next": "^14.2.32",
     "react": "^18",
     "react-dom": "^18"
   },
   "devDependencies": {
+    "@stryker-mutator/core": "^9.3.0",
+    "@stryker-mutator/jest-runner": "^9.3.0",
+    "@stryker-mutator/typescript": "^4.0.0",
+    "@types/express": "^5.0.5",
+    "@types/jest": "^30.0.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/supertest": "^6.0.3",
     "eslint": "^9.35.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",
+    "jest": "^30.2.0",
     "prettier": "^3.6.2",
-    "typescript": "^5.9.2"
+    "sqlite3": "^5.1.7",
+    "supertest": "^7.1.4",
+    "ts-jest": "^29.4.5"
   }
 }

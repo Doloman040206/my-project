@@ -1,72 +1,55 @@
-import React, { use, useEffect, useState } from 'react';
-import { CreatePizaForm } from './components/CreatePizaForm';
-import { PizaObject} from './types';
-import { PizaListItem } from './components/PizaListItem';
+import React from 'react';
+import CreatePizaForm from './components/CreatePizaForm';
+import PizaListItem from './components/PizaListItem';
+import { usePizas } from './usePizas';
+import { PizaObject } from './types';
+
+export default function AdminPage() {
+  const { pizas, add, edit, remove, } = usePizas();
 
 
+  const handleAdd = async (name: string, ingredients: string, price: number) => {
+    try {
+      await add(name, ingredients, price);
+    } catch (e: any) {
+      alert('Create failed: ' + (e.message || e));
+    }
+  };
 
+  const handleDelete = async (id: number) => {
+    if (!confirm('Are you sure you want to delete this pizza?')) return;
+    try {
+      await remove(id);
+    } catch (e: any) {
+      alert('Delete failed: ' + (e.message || e));
+    }
+  };
 
-const App = () => {
+  const handleEditRequest = async (p: PizaObject) => {
+    const newName = prompt('Pizza name', p.name);
+    if (newName == null) return;
 
-	async function apiCreatePiza(name: string, ingridients: string, price: number) {
-	const request = await fetch('/api/piza', {
-		method: 'POST',
-		headers: { 'Content-Type': 'application/json' },
-		body: JSON.stringify({ name, ingridients, price }),
-	});
-	return request.json();
-	}
+    const newIngridients = prompt('Pizza ingredients', p.ingridients);
+    if (newIngridients == null) return;
 
-	async function apiEditPiza(id: number, name: string, ingridients: string, price: number) {
-	const request = await fetch(`/api/piza/${id}`, {
-		method: 'PUT',
-		headers: { 'Content-Type': 'application/json' },
-		body: JSON.stringify({ name, ingridients, price }),
-	});
-	return request.json();
-	}
+    let priceValue: number | null = null;
+    while (priceValue === null) {
+      const priceInput = prompt('Pizza price', String(p.price));
+      if (priceInput == null) return; // user cancel
+      const parsed = parseFloat(priceInput);
+      if (isNaN(parsed)) {
+        alert('Wrong price, try again');
+        continue;
+      }
+      priceValue = parsed;
+    }
 
-	async function apiDeletePiza(id: number) {
-	const request = await fetch(`/api/piza/${id}`, {
-		method: 'DELETE',
-	});
-	return request.json();
-	}
-
-	
-
-	const [pizaList, setPizaList] = useState<PizaObject[]>([]);
-	useEffect(() => {
-		fetchPizaList()
-	}, [])
-
-	async function addItem(name: string, ingridients: string, price: number){
-		let createResponse = await apiCreatePiza(name, ingridients, price);
-		console.log('createResponse', createResponse)
-		await fetchPizaList()
-		}
-
-
-
-	async function deleteItem(id:number){
-		let deleteResponse = await apiDeletePiza(id);
-		console.log('deleteResponse', deleteResponse)
-		await fetchPizaList()
-	}
-
-	async function editItem(id: number, name: string, ingridients: string, price: number){
-		let editResponse = await apiEditPiza(id, name, ingridients, price);
-		console.log('editResponse', editResponse)
-		await fetchPizaList()
-	}
-
-	const fetchPizaList = async () => {
-		const responce = await fetch('/api/piza');
-		const data = (await responce.json())
-		// debugger
-		console.log('fetchPiza response', data)
-		setPizaList(data)
-	}
+    try {
+      await edit(p.id, { name: newName.trim(), ingridients: newIngridients.trim(), price: priceValue });
+    } catch (e: any) {
+      alert('Update failed: ' + (e.message || e));
+    }
+  };
 	
 	return (<>
 		<div
@@ -99,7 +82,7 @@ const App = () => {
 			>
 				Piza List
 			</div>
-			<CreatePizaForm addItem={addItem}/>
+			<CreatePizaForm onAdd={handleAdd}/>
 			<div
 				style={{
 					background: '#f9f9f9',
@@ -111,10 +94,10 @@ const App = () => {
 
 
 
-				{pizaList.length > 0 ? (
-					pizaList.map((item, index) => (
+				{pizas.length > 0 ? (
+					pizas.map((item, index) => (
 
-						<PizaListItem key={index} piza={item} onDelete={deleteItem} onEdit={editItem} />
+						<PizaListItem key={index} piza={item} onDelete={handleDelete} onEditRequest={handleEditRequest} />
 
 					))
 				) : (
@@ -137,4 +120,4 @@ const App = () => {
 	);
 };
 
-export default App;
+

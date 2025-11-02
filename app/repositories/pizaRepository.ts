@@ -1,4 +1,4 @@
-import pool from '@/app/libs/piza';
+import pool from '../libs/piza';
 import type { RowDataPacket, ResultSetHeader } from 'mysql2';
 
   export interface PizaData {
