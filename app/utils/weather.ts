@@ -1,4 +1,3 @@
-
 export function weatherCodeToText(weather_code: number) {
   switch (weather_code) {
     case 0:

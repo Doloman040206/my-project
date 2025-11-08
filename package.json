@@ -6,11 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,md}\"",
-    "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json,md}\"",
-    "lint:eslint": "eslint \"src/**/*.{ts,tsx,js,jsx}\"",
+    "format": "prettier --write \".\" --ignore-path .prettierignore",
+    "format:check": "prettier --check \".\" --ignore-path .prettierignore",
+    "lint:eslint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:next": "next lint",
-    "lint": "npm run lint:next && npm run lint:eslint",
+    "lint": "npm run lint:eslint",
     "build-check": "tsc --noEmit",
     "prepare": "husky install",
     "prepush-checks": "npm run lint && npm test && npm run build-check",
@@ -20,19 +20,17 @@
     "test": "npm run test:unit && npm run test:integration && npm run test:e2e"
   },
   "lint-staged": {
-    "src/**/*.{ts,tsx,js,jsx}": [
+    "**/*.{ts,tsx,js,jsx}": [
       "prettier --write",
       "eslint --fix",
       "git add"
     ],
-    "src/**/*.{json,md}": [
+    "**/*.{json,md}": [
       "prettier --write",
       "git add"
     ]
   },
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^8.44.0",
-    "@typescript-eslint/parser": "^8.44.0",
     "express": "^5.1.0",
     "knex": "^3.1.0",
     "mysql2": "^3.15.3",
@@ -52,9 +50,14 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/supertest": "^6.0.3",
+    "@typescript-eslint/eslint-plugin": "^8.46.3",
+    "@typescript-eslint/parser": "^8.46.3",
     "eslint": "^9.35.0",
     "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.1",
     "husky": "^9.1.7",
     "jest": "^30.2.0",
     "lint-staged": "^16.2.6",

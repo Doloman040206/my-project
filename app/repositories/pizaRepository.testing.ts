@@ -24,7 +24,9 @@ export function createPizaRepository(knex: Knex): PizaRepo {
     },
 
     async findById(id: string) {
-      const row = await knex<PizaData>(table).where({ id: Number(id) }).first();
+      const row = await knex<PizaData>(table)
+        .where({ id: Number(id) })
+        .first();
       return row ?? null;
     },
 
@@ -34,12 +36,16 @@ export function createPizaRepository(knex: Knex): PizaRepo {
     },
 
     async update(id, patch) {
-      const affected = await knex<PizaData>(table).where({ id: Number(id) }).update(patch);
+      const affected = await knex<PizaData>(table)
+        .where({ id: Number(id) })
+        .update(patch);
       return (affected ?? 0) > 0;
     },
 
     async remove(id) {
-      const affected = await knex<PizaData>(table).where({ id: Number(id) }).del();
+      const affected = await knex<PizaData>(table)
+        .where({ id: Number(id) })
+        .del();
       return (affected ?? 0) > 0;
     },
   };

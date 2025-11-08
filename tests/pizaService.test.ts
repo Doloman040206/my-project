@@ -1,11 +1,16 @@
-import { PizaService, PizaDataPublic } from '../app/services/pizaService';
+import { PizaService } from '../app/services/pizaService';
 import type { PizaData, PizaRepo } from '../app/repositories/pizaRepository';
 
 describe('PizaService', () => {
   let mockRepo: jest.Mocked<PizaRepo>;
   let service: PizaService;
 
-  const samplePiza: PizaData = { id: 1, name: 'Margherita', ingridients: 'tomato,cheese', price: 9 };
+  const samplePiza: PizaData = {
+    id: 1,
+    name: 'Margherita',
+    ingridients: 'tomato,cheese',
+    price: 9,
+  };
 
   beforeEach(() => {
     mockRepo = {
@@ -61,7 +66,11 @@ describe('PizaService', () => {
     });
 
     it('створює піцу та повертає її', async () => {
-      const payload: Omit<PizaData, 'id'> = { name: 'Pepperoni', ingridients: 'pepperoni,cheese', price: 12 };
+      const payload: Omit<PizaData, 'id'> = {
+        name: 'Pepperoni',
+        ingridients: 'pepperoni,cheese',
+        price: 12,
+      };
       mockRepo.insert.mockResolvedValue(77);
       mockRepo.findById.mockResolvedValue({ id: 77, ...payload });
 

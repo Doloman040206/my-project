@@ -1,14 +1,11 @@
-// components/PizaListItem.tsx
 import React from 'react';
-import { PizaObject } from '../types';
-
+import { PizaObject } from '../../../app/types';
 
 export interface PizaListItemProps {
   piza: PizaObject;
   onDelete: (id: number) => void;
   onEditRequest: (piza: PizaObject) => void;
 }
-
 
 export function PizaListItem({ piza, onDelete, onEditRequest }: PizaListItemProps) {
   return (
@@ -48,17 +45,17 @@ export function PizaListItem({ piza, onDelete, onEditRequest }: PizaListItemProp
       <div style={{ marginTop: 8 }}>
         <div style={{ marginBottom: 6 }}>
           <label style={{ marginRight: 8, fontWeight: 500 }}>Name:</label>
-          <span style={{ fontWeight: 700 }}>{piza.name}</span>
+          <span style={{ fontWeight: 700 }}>{piza?.name ?? 'No name'}</span>
         </div>
 
         <div style={{ marginBottom: 6 }}>
           <label style={{ marginRight: 8, fontWeight: 500 }}>Ingredients:</label>
-          <span style={{ fontWeight: 700 }}>{piza.ingridients}</span>
+          <span style={{ fontWeight: 700 }}>{piza?.ingridients ?? 'No ingridients'}</span>
         </div>
 
         <div>
           <label style={{ marginRight: 8, fontWeight: 500 }}>Price:</label>
-          <span style={{ fontWeight: 700 }}>{piza.price}</span>
+          <span style={{ fontWeight: 700 }}>{piza?.price ?? 'No price'}</span>
         </div>
       </div>
     </div>

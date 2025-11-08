@@ -8,8 +8,11 @@ export function withHandler(fn: (...args: any[]) => Promise<NextResponse | Respo
       return NextResponse.json(result);
     } catch (err) {
       console.error('Handler error:', err);
-      const message = (err instanceof Error && err.message) ? err.message : 'Server error';
-      return NextResponse.json({ error: message === 'Invalid payload' ? message : 'Server error' }, { status: message === 'Invalid payload' ? 400 : 500 });
+      const message = err instanceof Error && err.message ? err.message : 'Server error';
+      return NextResponse.json(
+        { error: message === 'Invalid payload' ? message : 'Server error' },
+        { status: message === 'Invalid payload' ? 400 : 500 },
+      );
     }
   };
 }

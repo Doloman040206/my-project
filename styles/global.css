@@ -1,189 +1,175 @@
 .container {
-    max-width: 970px;
+  max-width: 970px;
 }
 
 .top-line {
-    border-top: 1px solid #828282;
-    margin-bottom: 34px;
+  border-top: 1px solid #828282;
+  margin-bottom: 34px;
 }
 
 .language {
-    transform: rotate(-90deg);
-    margin-bottom: 21px;
-    font-weight: bold;
-
+  transform: rotate(-90deg);
+  margin-bottom: 21px;
+  font-weight: bold;
 }
 
 .language a {
-    font-size: 16px;
-    color: #000;
+  font-size: 16px;
+  color: #000;
 }
 
 .language a:not(.activ) {
-    color: #828282;
+  color: #828282;
 }
 
 nav {
-    margin: 30px 0 17px;
+  margin: 30px 0 17px;
 }
 
 nav .nav-link {
-    font-size: 18px;
-    font-weight: bold;
-    color: #828282
+  font-size: 18px;
+  font-weight: bold;
+  color: #828282;
 }
 
 .logo {
-    font-size: 46px;
-    font-weight: bold;
-    color: #070707;
-    line-height: 58px;
+  font-size: 46px;
+  font-weight: bold;
+  color: #070707;
+  line-height: 58px;
 }
 
 .about-us {
-    margin-top: 104px;
-    padding: 120px 0 107px;
+  margin-top: 104px;
+  padding: 120px 0 107px;
 }
 
 .about-us h2 {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .about-us p {
-    font-size: 18px;
-    line-height: 21px;
-    color: #070707;
-    margin-bottom: 30px;
+  font-size: 18px;
+  line-height: 21px;
+  color: #070707;
+  margin-bottom: 30px;
 }
 
 .bg-grey {
-    background: #f6f6f6;
+  background: #f6f6f6;
 }
 
 #choise {
-    font-size: 30px;
-    margin-bottom: 50px;
-    /* height: 300px ;*/
-    text-align: center;
-    font-weight: bold;
+  font-size: 30px;
+  margin-bottom: 50px;
+  /* height: 300px ;*/
+  text-align: center;
+  font-weight: bold;
 }
 
 #f-img {
-    margin: 0px;
-    width: 100vw;
-    width: 95vw;
-    height: 600px;
+  margin: 0px;
+  width: 100vw;
+  width: 95vw;
+  height: 600px;
 }
 
 #img-1 {
-    list-style: none;
-    width: 100%;
-    padding-inline-start: 0px;
-    margin: 0px;
-    margin-block-start: oem;
-    margin-block-end: 0em;
+  list-style: none;
+  width: 100%;
+  padding-inline-start: 0px;
+  margin: 0px;
+  margin-block-start: oem;
+  margin-block-end: 0em;
 }
 
 .img-1 li {
-    display: block;
-    float: left;
-    width: 25%;
-    margin: 0px;
+  display: block;
+  float: left;
+  width: 25%;
+  margin: 0px;
 }
 
 .food-image {
-    width: 75%;
-    /* overflow:hidden;*/
-
+  width: 75%;
+  /* overflow:hidden;*/
 }
 
-
-
 .food-image img {
-    width: 100%;
-    height: auto;
-    transform: scale(1.0);
-    border-radius: 150px;
+  width: 100%;
+  height: auto;
+  transform: scale(1);
+  border-radius: 150px;
 }
 
 .food-image img:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
-
-
-
-
 .portfolio {
-    padding: 112px 0 10px;
+  padding: 112px 0 10px;
 }
 
 .portfolio h2 {
-    margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 
 .portfolio h5 {
-    margin: 45px 0 90px;
-    font-size: 18px;
-    text-decoration: underline;
+  margin: 45px 0 90px;
+  font-size: 18px;
+  text-decoration: underline;
 }
 
 .contact {
-    padding: 114px 0 123px;
+  padding: 114px 0 123px;
 }
 
 .contact p {
-    font-size: 18px;
-    line-height: 21px;
-    color: #070707;
+  font-size: 18px;
+  line-height: 21px;
+  color: #070707;
 }
 
 .contact .btn {
-    font-size: 18px;
-    font-weight: 500;
-    border-radius: 30px;
-    padding:  13px 30px;
-    margin: 10px 0 85px;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 30px;
+  padding: 13px 30px;
+  margin: 10px 0 85px;
 }
 
 .soc a {
-    margin: 0 30px;
+  margin: 0 30px;
 }
 
 .copiright {
-    margin: 45px 0 120px;
-    font-size: 14px;
-    line-height: 16px;
-    color: #828282;
+  margin: 45px 0 120px;
+  font-size: 14px;
+  line-height: 16px;
+  color: #828282;
 }
-
-
 
 /*responsive*/
 
 @media (max-width: 991.98px) {
-    .container .navbar {
-        margin-top: 45px;
-        position: fixed;
-        z-index: 999;
-        width: 100%;
-        right: 15px;
-        left: 0;
+  .container .navbar {
+    margin-top: 45px;
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+    right: 15px;
+    left: 0;
+  }
 
+  .navbar-light .navbar-toggler {
+    margin-left: auto;
+    border: none;
+    padding: 0;
+    z-index: 9;
+    margin-right: 15px;
+  }
 
-    }
-
-    .navbar-light .navbar-toggler {
-        margin-left: auto;
-        border: none;
-        padding: 0;
-        z-index: 9;
-        margin-right: 15px;
-    }
-
-
-
-    /* nav.navbar-light .navbar-toggler.collapsed .navbar-toggler-icon {
+  /* nav.navbar-light .navbar-toggler.collapsed .navbar-toggler-icon {
         background-image: url('img/mobile -menu.svg');
     }
 
@@ -191,76 +177,68 @@ nav .nav-link {
         background-image: url('img/mobile-menu-close.svg');
     } */
 
-    nav .nav-link {
-        font-size: 34px;
-        line-height: 42px;
-    }
+  nav .nav-link {
+    font-size: 34px;
+    line-height: 42px;
+  }
 
-    nav .nav-item {
-        margin-bottom: 35px;
+  nav .nav-item {
+    margin-bottom: 35px;
+  }
 
-    }
+  .navbar-collapse,
+  .collapsing {
+    margin-top: -75px;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: #fff;
+  }
 
-    .navbar-collapse,
-    .collapsing {
-        margin-top: -75px;
-        width: 100%;
-        height: 100vh;
-        top: 0;
-        left: 0;
-        background: #fff;
+  .navbar-collapse .navbar-nav {
+    padding: 30px 0 0 35px;
+  }
 
-    }
+  .language {
+    position: absolute;
+    right: 30px;
+    bottom: 70px;
+    transform: rotate(90deg);
+    font-size: 34px;
+  }
 
-    .navbar-collapse .navbar-nav {
-        padding: 30px 0 0 35px;
+  .language a {
+    font-size: 34px;
+  }
 
-    }
+  .logo {
+    margin: 50px 0 10px;
+  }
 
-    .language {
-        position: absolute;
-        right: 30px;
-        bottom: 70px;
-        transform: rotate(90deg);
-        font-size: 34px;
-    }
+  .about-us h2 {
+    margin-bottom: 20px;
+  }
 
-    .language a {
-        font-size: 34px;
-    }
+  .contact {
+    margin: 114px 0 90px;
+  }
 
-    .logo {
-        margin: 50px 0 10px;
+  .contact .btn {
+    width: 100%;
+  }
 
-    }
+  .soc > div {
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 20px;
+  }
 
-    .about-us h2 {
-        margin-bottom: 20px;
-    }
+  .soc a {
+    margin: 0;
+  }
 
-
-
-
-     .contact {
-        margin: 114px 0 90px;
-    }
-
-    .contact .btn {
-        width: 100%;
-    }
-
-    .soc>div {
-        justify-content: space-between;
-        width: 100%;
-        padding: 0 20px;
-    }
-
-    .soc a {
-        margin: 0;
-
-    }
-
-    .copiright {
-        margin: 45px 0 0;
-    }
+  .copiright {
+    margin: 45px 0 0;
+  }
 }

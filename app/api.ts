@@ -18,7 +18,10 @@ export async function apiCreatePiza(payload: Omit<PizaObject, 'id'>): Promise<Pi
   return r.json();
 }
 
-export async function apiEditPiza(id: number, payload: Partial<Omit<PizaObject, 'id'>>): Promise<PizaObject> {
+export async function apiEditPiza(
+  id: number,
+  payload: Partial<Omit<PizaObject, 'id'>>,
+): Promise<PizaObject> {
   const r = await fetch(`/api/piza/${id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
