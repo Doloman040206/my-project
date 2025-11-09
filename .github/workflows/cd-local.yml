@@ -27,9 +27,9 @@ jobs:
       - name: Restart via PM2
         shell: cmd
         env:
-            PM2_HOME: C:\actions-runner\.pm2
+          PM2_HOME: C:\actions-runner\.pm2
         run: |
-            cd "%GITHUB_WORKSPACE%"
-            npx pm2 delete ecosystem.config.js || echo "No previous instance"
-            npx pm2 start ecosystem.config.js
-            npx pm2 save
+          cd "%GITHUB_WORKSPACE%"
+          npx pm2 delete ecosystem.config.js || echo "No previous instance"
+          npx pm2 start ecosystem.config.js
+          npx pm2 save
