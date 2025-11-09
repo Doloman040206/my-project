@@ -24,7 +24,7 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Restart via PM2 (use ecosystem)
+      - name: Restart via PM2 (use npx)
         shell: cmd
         run: |
             cd "%GITHUB_WORKSPACE%"
