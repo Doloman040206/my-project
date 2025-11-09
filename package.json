@@ -17,7 +17,8 @@
     "test:unit": "jest --config=jest.unit.config.ts --runInBand",
     "test:integration": "jest --config=jest.integration.config.ts --runInBand",
     "test:e2e": "jest --config=jest.e2e.config.ts --runInBand --testTimeout=180000",
-    "test": "npm run test:unit && npm run test:integration && npm run test:e2e"
+    "test": "npm run test:unit && npm run test:integration && npm run test:e2e",
+    "tunnel": "lt --port 3000 --subdomain mypiza-demo"
   },
   "lint-staged": {
     "**/*.{ts,tsx,js,jsx}": [
@@ -61,6 +62,7 @@
     "husky": "^9.1.7",
     "jest": "^30.2.0",
     "lint-staged": "^16.2.6",
+    "localtunnel": "^2.0.2",
     "pm2": "^6.0.13",
     "prettier": "^3.6.2",
     "sqlite3": "^5.1.7",
