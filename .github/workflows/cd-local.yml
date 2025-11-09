@@ -24,9 +24,9 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Restart via PM2 (use npx)
+      - name: Restart via PM2 (direct local bin)
         shell: cmd
         run: |
             cd "%GITHUB_WORKSPACE%"
-            pm2 reload ecosystem.config.js || pm2 start ecosystem.config.js
-            pm2 save
+            node_modules\.bin\pm2 reload ecosystem.config.js || node_modules\.bin\pm2 start ecosystem.config.js
+            node_modules\.bin\pm2 save
