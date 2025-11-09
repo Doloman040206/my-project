@@ -24,9 +24,12 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Restart via PM2 (direct local bin)
+      - name: Restart via PM2
         shell: cmd
+        env:
+            PM2_HOME: C:\actions-runner\.pm2
         run: |
             cd "%GITHUB_WORKSPACE%"
-            node_modules\.bin\pm2 reload ecosystem.config.js || node_modules\.bin\pm2 start ecosystem.config.js
-            node_modules\.bin\pm2 save
+            npx pm2 delete ecosystem.config.js || echo "No previous instance"
+            npx pm2 start ecosystem.config.js
+            npx pm2 save
