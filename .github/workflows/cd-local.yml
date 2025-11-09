@@ -18,8 +18,8 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Install dependencies (PowerShell Bypass)
+        run: powershell -NoProfile -ExecutionPolicy Bypass -Command "npm ci"
 
       - name: Build
         run: npm run build
