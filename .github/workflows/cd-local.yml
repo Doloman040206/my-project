@@ -25,9 +25,8 @@ jobs:
         run: npm run build
 
       - name: Restart via PM2 (use ecosystem)
+        shell: cmd
         run: |
-          cd "${{ github.workspace }}"
-          npm ci
-          npm run build
-          pm2 reload ecosystem.config.js || pm2 start ecosystem.config.js
-          pm2 save
+            cd "%GITHUB_WORKSPACE%"
+            pm2 reload ecosystem.config.js || pm2 start ecosystem.config.js
+            pm2 save
