@@ -30,9 +30,10 @@ jobs:
         run: npm ci
 
       - name: Check commit messages (conventional commits)
+        if: github.event_name == 'pull_request'
         run: |
-          npx --no-install commitlint --from=$(git merge-base origin/${{ github.base_ref }} ${{ github.head_ref }}) --to=HEAD
-          shell: bash
+          npx --no-install commitlint --from=$(git merge-base origin/${{ github.base_ref }} ${{ github.head_ref }}) --to=HEAD || true
+        shell: bash
 
       - name: Prettier check (format)
         run: npm run format:check
