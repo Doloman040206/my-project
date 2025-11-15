@@ -1,0 +1,45 @@
+config:
+  target: 'http://localhost:3000'
+  phases:
+    - duration: 60
+      arrivalRate: 10
+  defaults:
+    headers:
+      Content-Type: 'application/json'
+scenarios:
+  - name: 'Read list + read item'
+    weight: 5
+    flow:
+      - get:
+          url: '/api/piza'
+      - think: 1
+      - get:
+          url: '/api/piza/{{ randomInt(1,5) }}'
+      - think: 1
+
+  - name: 'Create -> Update -> Delete'
+    weight: 3
+    flow:
+      - post:
+          url: '/api/piza'
+          json:
+            name: 'LoadPizza {{ $timestamp }}'
+            ingridients: 'cheese,tomato'
+            price: 9.99
+      - think: 0.5
+      - put:
+          url: "/api/piza/{{ last_request.body.insertId || '1' }}" # fallback 1
+          json:
+            name: 'Updated LoadPizza {{ $timestamp }}'
+            ingridients: 'cheese,tomato,olives'
+            price: 10.99
+      - think: 0.5
+      - delete:
+          url: "/api/piza/{{ last_request.body.insertId || '1' }}"
+
+  - name: 'Frequent reads (weather)'
+    weight: 2
+    flow:
+      - get:
+          url: '/api/weather'
+      - think: 0.2

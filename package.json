@@ -18,7 +18,11 @@
     "test:integration": "jest --config=jest.integration.config.ts --runInBand",
     "test:e2e": "jest --config=jest.e2e.config.ts --runInBand --testTimeout=180000",
     "test": "npm run test:unit && npm run test:integration && npm run test:e2e",
-    "tunnel": "lt --port 3000 --subdomain mypiza-demo"
+    "tunnel": "lt --port 3000 --subdomain mypiza-demo",
+    "lhci:collect": "lhci collect --config=./.lighthouserc.json",
+    "lhci:assert": "lhci assert --config=./.lighthouserc.json",
+    "lhci": "lhci autorun --config=./.lighthouserc.json",
+    "start:server": "node server.js"
   },
   "lint-staged": {
     "**/*.{ts,tsx,js,jsx}": [
@@ -42,6 +46,7 @@
   "devDependencies": {
     "@commitlint/cli": "^20.1.0",
     "@commitlint/config-conventional": "^20.0.0",
+    "@lhci/cli": "^0.15.1",
     "@stryker-mutator/core": "^9.3.0",
     "@stryker-mutator/jest-runner": "^9.3.0",
     "@stryker-mutator/typescript": "^4.0.0",
@@ -53,6 +58,10 @@
     "@types/supertest": "^6.0.3",
     "@typescript-eslint/eslint-plugin": "^8.46.3",
     "@typescript-eslint/parser": "^8.46.3",
+    "0x": "^6.0.0",
+    "artillery": "^1.6.0",
+    "autocannon": "^8.0.0",
+    "clinic": "^13.0.0",
     "eslint": "^9.35.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-jsx-a11y": "^6.10.2",
@@ -61,14 +70,17 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "husky": "^9.1.7",
     "jest": "^30.2.0",
+    "lighthouse": "^13.0.1",
     "lint-staged": "^16.2.6",
     "localtunnel": "^2.0.2",
     "pm2": "^6.0.13",
     "prettier": "^3.6.2",
+    "psi": "^4.1.0",
     "sqlite3": "^5.1.7",
     "supertest": "^7.1.4",
     "ts-jest": "^29.4.5",
     "ts-node": "^10.9.2",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "web-vitals": "^5.1.0"
   }
 }

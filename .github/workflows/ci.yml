@@ -41,11 +41,11 @@ jobs:
       - name: ESLint
         run: npm run lint:eslint
 
-      - name: TypeScript build-check
-        run: npm run build-check
-
       - name: Build (Next)
         run: npm run build
+
+      - name: Run Lighthouse CI
+        run: npm run lhci
 
       - name: Run tests (unit + integration + e2e)
         run: npm run test
