@@ -30,6 +30,12 @@
       "eslint --fix",
       "git add"
     ],
+  "browserslist": [
+      "last 2 Chrome versions",
+      "last 2 Firefox versions",
+      "last 2 Safari versions",
+      "last 2 Edge versions"
+    ],
     "**/*.{json,md}": [
       "prettier --write",
       "git add"
