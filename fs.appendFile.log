@@ -1,0 +1,8 @@
+const fs = require('fs');
+
+function logError(msg) {
+  const time = new Date().toISOString();
+  fs.appendFile('errors.log', `[${time}] ${msg}\n`, (err) => {
+    if (err) console.error('Cannot write to log:', err);
+  });
+}

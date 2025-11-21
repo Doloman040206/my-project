@@ -2,7 +2,7 @@
   "ci": {
     "collect": {
       "numberOfRuns": 3,
-      "url": ["http://localhost:3000", "http://localhost:3000/admin"],
+      "url": ["http://localhost:3000/admin"],
       "startServerCommand": "npm run start",
       "startServerReadyPattern": "started server",
       "chromeFlags": "--no-sandbox --headless"

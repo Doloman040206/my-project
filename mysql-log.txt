@@ -1,0 +1,43 @@
+=== MySQL Monitor started for database: piza ===
+
+Inserted test data into my_table
+
+=== MySQL Monitor Snapshot #1 ===
+Time: 2025-11-21T11:52:46.530Z
+Threads_connected: 2
+Tables: [
+  {
+    "TABLE_NAME": "my_table",
+    "TABLE_ROWS": 3,
+    "data_mb": "0.02",
+    "index_mb": "0.00"
+  }
+]
+
+=== MySQL Monitor Snapshot #2 ===
+Time: 2025-11-21T11:52:51.526Z
+Threads_connected: 2
+Tables: [
+  {
+    "TABLE_NAME": "my_table",
+    "TABLE_ROWS": 3,
+    "data_mb": "0.02",
+    "index_mb": "0.00"
+  }
+]
+
+=== MySQL Monitor Snapshot #3 ===
+Time: 2025-11-21T11:52:56.536Z
+Threads_connected: 2
+Tables: [
+  {
+    "TABLE_NAME": "my_table",
+    "TABLE_ROWS": 3,
+    "data_mb": "0.02",
+    "index_mb": "0.00"
+  }
+]
+
+Deleted test data from my_table
+
+=== MySQL Monitor finished ===

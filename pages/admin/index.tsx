@@ -3,6 +3,7 @@ import CreatePizaForm from './components/CreatePizaForm';
 import PizaListItem from './components/PizaListItem';
 import { usePizas } from '../../app/usePizas';
 import { PizaObject } from '../../app/types';
+import Head from 'next/head';
 
 export default function AdminPage() {
   const { pizas, add, edit, remove } = usePizas();
@@ -56,6 +57,13 @@ export default function AdminPage() {
 
   return (
     <>
+      <Head>
+        <title>Admin</title>
+        <meta
+          name="description"
+          content="Адмін-сторінка керування піцами: додавання, редагування та видалення."
+        />
+      </Head>
       <div
         style={{
           fontFamily: 'Arial, sans-serif',
@@ -73,7 +81,7 @@ export default function AdminPage() {
             color: 'green',
           }}
         >
-          Admin
+          <title>Admin</title>
         </div>
 
         <div
@@ -108,7 +116,7 @@ export default function AdminPage() {
               style={{
                 textAlign: 'center',
                 fontSize: '1.2rem',
-                color: '#777',
+                color: '#555',
               }}
             >
               No items in the list

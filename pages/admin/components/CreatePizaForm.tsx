@@ -98,7 +98,7 @@ export function CreatePizaForm({ onAdd }: CreatePizaFormProps) {
           style={{
             fontSize: '1.2rem',
             padding: '10px 20px',
-            backgroundColor: '#4caf50',
+            backgroundColor: '#2e7d32',
             color: 'white',
             border: 'none',
             borderRadius: '8px',
