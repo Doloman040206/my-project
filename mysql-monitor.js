@@ -1,11 +1,11 @@
 // mysql-monitor.js
 const fs = require('fs');
-const mysql = require('mysql2/promise'); // npm install mysql2
+const mysql = require('mysql2/promise');
 
 const logFile = 'mysql-log.txt';
-const dbName = 'piza'; // Заміни на назву твоєї бази
-const tableName = 'my_table'; // Назва твоєї таблиці
-const intervalMs = 5000; // Інтервал збору даних (мс)
+const dbName = 'piza';
+const tableName = 'my_table';
+const intervalMs = 5000;
 const testData = [
   ['Pizza Margherita', 'tomato, cheese', 5.99],
   ['Pizza Pepperoni', 'tomato, cheese, pepperoni', 7.99],
@@ -14,15 +14,13 @@ const testData = [
 
 (async () => {
   try {
-    // Підключення до MySQL
     const connection = await mysql.createConnection({
       host: 'localhost',
-      user: 'root', // твій користувач
-      password: 'doloman040206', // твій пароль
+      user: 'root',
+      password: 'doloman040206',
       database: dbName,
     });
 
-    // Після підключення до MySQL
     await connection.query(`
   CREATE TABLE IF NOT EXISTS ${tableName} (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -34,13 +32,11 @@ const testData = [
     fs.appendFileSync(logFile, `\nChecked/created table ${tableName}\n`);
     console.warn(`Checked/created table ${tableName}`);
 
-    // Очищаємо лог-файл на старті
     fs.writeFileSync(logFile, '', 'utf8');
 
     console.warn(`=== MySQL Monitor started for database: ${dbName} ===`);
     fs.appendFileSync(logFile, `=== MySQL Monitor started for database: ${dbName} ===\n`);
 
-    // Додаємо тестові дані
     for (const row of testData) {
       await connection.query(
         `INSERT INTO ${tableName} (name, ingredients, price) VALUES (?, ?, ?)`,
@@ -49,16 +45,13 @@ const testData = [
     }
     fs.appendFileSync(logFile, `\nInserted test data into ${tableName}\n`);
 
-    // Запускаємо інтервал для збору даних
     let iterations = 0;
-    const maxIterations = 3; // Зробимо 3 знімки
+    const maxIterations = 3;
     const monitorInterval = setInterval(async () => {
       iterations++;
 
-      // 1. Збір активних з'єднань
       const [threads] = await connection.query("SHOW GLOBAL STATUS LIKE 'Threads_connected'");
 
-      // 2. Збір інформації про таблиці
       const [tables] = await connection.query(
         `
         SELECT table_name,
@@ -71,7 +64,6 @@ const testData = [
         [dbName, tableName],
       );
 
-      // 3. Формуємо лог
       const log = `\n=== MySQL Monitor Snapshot #${iterations} ===
         Time: ${new Date().toISOString()}
         Threads_connected: ${threads[0]?.Value || 0}
@@ -81,7 +73,6 @@ const testData = [
       fs.appendFileSync(logFile, log);
       console.warn(log);
 
-      // Після maxIterations видаляємо тестові дані
       if (iterations >= maxIterations) {
         await connection.query(
           `DELETE FROM ${tableName} WHERE name IN (?, ?, ?)`,

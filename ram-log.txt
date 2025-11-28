@@ -1,30 +1,30 @@
 RAM usage:
-RSS: 46022656 bytes
-Heap Total: 8757248 bytes
-Heap Used: 6449608 bytes
+RSS: 43786240 bytes
+Heap Total: 9089024 bytes
+Heap Used: 6765408 bytes
 External: 2247516 bytes
 
 RAM usage:
-RSS: 43937792 bytes
-Heap Total: 7184384 bytes
-Heap Used: 5552136 bytes
+RSS: 41304064 bytes
+Heap Total: 7446528 bytes
+Heap Used: 5553968 bytes
 External: 2257598 bytes
 
 RAM usage:
-RSS: 43962368 bytes
-Heap Total: 7184384 bytes
-Heap Used: 5575456 bytes
+RSS: 41332736 bytes
+Heap Total: 7446528 bytes
+Heap Used: 5577288 bytes
 External: 2257598 bytes
 
 RAM usage:
-RSS: 43970560 bytes
-Heap Total: 7184384 bytes
-Heap Used: 5580120 bytes
+RSS: 41336832 bytes
+Heap Total: 7446528 bytes
+Heap Used: 5581952 bytes
 External: 2257598 bytes
 
 RAM usage:
-RSS: 43974656 bytes
-Heap Total: 7184384 bytes
-Heap Used: 5584672 bytes
+RSS: 41340928 bytes
+Heap Total: 7446528 bytes
+Heap Used: 5586504 bytes
 External: 2257598 bytes
 
