@@ -11,7 +11,7 @@ export interface PizaData {
 export type PizaRepo = {
   findAll: () => Promise<PizaData[]>;
   findById: (id: string) => Promise<PizaData | null>;
-  insert: (payload: Omit<PizaData, 'id'>) => Promise<number>; // returns insertId
+  insert: (payload: Omit<PizaData, 'id'>) => Promise<number>;
   update: (id: string, patch: Partial<PizaData>) => Promise<boolean>;
   remove: (id: string) => Promise<boolean>;
 };

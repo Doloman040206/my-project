@@ -1,7 +1,7 @@
 import express from 'express';
 import type { Knex } from 'knex';
 import { createPizaRepository } from './repositories/pizaRepository.testing';
-import { PizaService } from './services/pizaService';
+import { PizaService } from '../app/libs/piza-service/dist';
 
 export function createApp(knex: Knex) {
   const app = express();

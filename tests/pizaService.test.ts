@@ -1,4 +1,4 @@
-import { PizaService } from '../app/services/pizaService';
+import { PizaService } from '../app/libs/piza-service/dist';
 import type { PizaData, PizaRepo } from '../app/repositories/pizaRepository';
 
 describe('PizaService', () => {
