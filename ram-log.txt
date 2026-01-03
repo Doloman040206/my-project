@@ -1,30 +1,127 @@
-RAM usage:
-RSS: 43786240 bytes
-Heap Total: 9089024 bytes
-Heap Used: 6765408 bytes
-External: 2247516 bytes
 
-RAM usage:
-RSS: 41304064 bytes
-Heap Total: 7446528 bytes
-Heap Used: 5553968 bytes
-External: 2257598 bytes
+=== RAM snapshot #1 ===
+Time: 2025-12-04T08:43:28.500Z
+RSS: 47009792 bytes (44.83 MB)
+Heap Total: 8757248 bytes (8.35 MB) — 18.63% of RSS
+Heap Used: 5607736 bytes (5.35 MB) — 11.93% of RSS
+External: 2247513 bytes (2.14 MB) — 4.78% of RSS
+ArrayBuffers: 18655 bytes (0.02 MB) — 0.04% of RSS
 
-RAM usage:
-RSS: 41332736 bytes
-Heap Total: 7446528 bytes
-Heap Used: 5577288 bytes
-External: 2257598 bytes
+V8 stats (from require('v8').getHeapStatistics()):
+  total_heap_size: 8.35 MB
+  total_available_size: 4138.24 MB
+  used_heap_size: 5.42 MB
 
-RAM usage:
-RSS: 41336832 bytes
-Heap Total: 7446528 bytes
-Heap Used: 5581952 bytes
-External: 2257598 bytes
+-- Buffer (tracked external allocations) --
+Total tracked Buffer bytes: 0 (0.00 MB)
+Top callers:
+  (no Buffer allocations recorded yet)
 
-RAM usage:
-RSS: 41340928 bytes
-Heap Total: 7446528 bytes
-Heap Used: 5586504 bytes
-External: 2257598 bytes
+=== RAM snapshot #2 ===
+Time: 2025-12-04T08:43:33.499Z
+RSS: 47161344 bytes (44.98 MB)
+Heap Total: 7708672 bytes (7.35 MB) — 16.35% of RSS
+Heap Used: 5613984 bytes (5.35 MB) — 11.90% of RSS
+External: 2278190 bytes (2.17 MB) — 4.83% of RSS
+ArrayBuffers: 18831 bytes (0.02 MB) — 0.04% of RSS
 
+V8 stats (from require('v8').getHeapStatistics()):
+  total_heap_size: 7.35 MB
+  total_available_size: 4138.73 MB
+  used_heap_size: 5.36 MB
+
+-- Buffer (tracked external allocations) --
+Total tracked Buffer bytes: 0 (0.00 MB)
+Top callers:
+  (no Buffer allocations recorded yet)
+
+=== RAM snapshot #3 ===
+Time: 2025-12-04T08:43:38.502Z
+RSS: 47321088 bytes (45.13 MB)
+Heap Total: 7970816 bytes (7.60 MB) — 16.84% of RSS
+Heap Used: 5622752 bytes (5.36 MB) — 11.88% of RSS
+External: 2278190 bytes (2.17 MB) — 4.81% of RSS
+ArrayBuffers: 18831 bytes (0.02 MB) — 0.04% of RSS
+
+V8 stats (from require('v8').getHeapStatistics()):
+  total_heap_size: 7.60 MB
+  total_available_size: 4138.62 MB
+  used_heap_size: 5.37 MB
+
+-- Buffer (tracked external allocations) --
+Total tracked Buffer bytes: 0 (0.00 MB)
+Top callers:
+  (no Buffer allocations recorded yet)
+
+=== RAM snapshot #4 ===
+Time: 2025-12-04T08:43:43.511Z
+RSS: 59879424 bytes (57.11 MB)
+Heap Total: 8757248 bytes (8.35 MB) — 14.62% of RSS
+Heap Used: 5847912 bytes (5.58 MB) — 9.77% of RSS
+External: 9432851 bytes (9.00 MB) — 15.75% of RSS
+ArrayBuffers: 6636567 bytes (6.33 MB) — 11.08% of RSS
+
+V8 stats (from require('v8').getHeapStatistics()):
+  total_heap_size: 8.35 MB
+  total_available_size: 4137.87 MB
+  used_heap_size: 5.58 MB
+
+-- Buffer (tracked external allocations) --
+Total tracked Buffer bytes: 7027336 (6.70 MB)
+Top callers:
+Buffer.from (C:\Users\Максим\OneDrive\Desktop\Вибіркові дисципліни\Розробка прорамного забезпечення на платформі Node.JS\my project\my-app\ram-monitor.js:29:5) -> 7027336 bytes (6.70 MB) — 100.00% of tracked Buffers
+
+=== RAM snapshot #5 ===
+Time: 2025-12-04T08:43:48.515Z
+RSS: 53129216 bytes (50.67 MB)
+Heap Total: 7708672 bytes (7.35 MB) — 14.51% of RSS
+Heap Used: 5855656 bytes (5.58 MB) — 11.02% of RSS
+External: 2405515 bytes (2.29 MB) — 4.53% of RSS
+ArrayBuffers: 18831 bytes (0.02 MB) — 0.04% of RSS
+
+V8 stats (from require('v8').getHeapStatistics()):
+  total_heap_size: 7.35 MB
+  total_available_size: 4138.87 MB
+  used_heap_size: 5.59 MB
+
+-- Buffer (tracked external allocations) --
+Total tracked Buffer bytes: 7027336 (6.70 MB)
+Top callers:
+Buffer.from (C:\Users\Максим\OneDrive\Desktop\Вибіркові дисципліни\Розробка прорамного забезпечення на платформі Node.JS\my project\my-app\ram-monitor.js:29:5) -> 7027336 bytes (6.70 MB) — 100.00% of tracked Buffers
+Heap snapshot saved: heap-1764837818504.heapsnapshot — open in Chrome DevTools (chrome://inspect) -> Memory -> Load
+
+=== RAM snapshot #6 ===
+Time: 2025-12-04T08:43:53.528Z
+RSS: 53190656 bytes (50.73 MB)
+Heap Total: 7708672 bytes (7.35 MB) — 14.49% of RSS
+Heap Used: 5877088 bytes (5.60 MB) — 11.05% of RSS
+External: 2405515 bytes (2.29 MB) — 4.52% of RSS
+ArrayBuffers: 18831 bytes (0.02 MB) — 0.04% of RSS
+
+V8 stats (from require('v8').getHeapStatistics()):
+  total_heap_size: 7.35 MB
+  total_available_size: 4138.85 MB
+  used_heap_size: 5.61 MB
+
+-- Buffer (tracked external allocations) --
+Total tracked Buffer bytes: 7027336 (6.70 MB)
+Top callers:
+Buffer.from (C:\Users\Максим\OneDrive\Desktop\Вибіркові дисципліни\Розробка прорамного забезпечення на платформі Node.JS\my project\my-app\ram-monitor.js:29:5) -> 7027336 bytes (6.70 MB) — 100.00% of tracked Buffers
+
+=== RAM snapshot #7 ===
+Time: 2025-12-04T08:43:58.544Z
+RSS: 59375616 bytes (56.63 MB)
+Heap Total: 8757248 bytes (8.35 MB) — 14.75% of RSS
+Heap Used: 5926392 bytes (5.65 MB) — 9.98% of RSS
+External: 9664559 bytes (9.22 MB) — 16.28% of RSS
+ArrayBuffers: 5548431 bytes (5.29 MB) — 9.34% of RSS
+
+V8 stats (from require('v8').getHeapStatistics()):
+  total_heap_size: 8.35 MB
+  total_available_size: 4137.87 MB
+  used_heap_size: 5.65 MB
+
+-- Buffer (tracked external allocations) --
+Total tracked Buffer bytes: 21249580 (20.27 MB)
+Top callers:
+Buffer.from (C:\Users\Максим\OneDrive\Desktop\Вибіркові дисципліни\Розробка прорамного забезпечення на платформі Node.JS\my project\my-app\ram-monitor.js:29:5) -> 21249580 bytes (20.27 MB) — 100.00% of tracked Buffers

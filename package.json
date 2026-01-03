@@ -49,10 +49,10 @@
     "express": "^5.1.0",
     "knex": "^3.1.0",
     "mysql2": "^3.15.3",
-    "next": "^14.2.32",
+    "next": "^14.2.35",
     "piza-service": "file:app/libs/piza-service",
-    "react": "^18",
-    "react-dom": "^18",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-helmet-async": "^2.0.5"
   },
   "devDependencies": {
